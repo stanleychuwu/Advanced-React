@@ -5,9 +5,9 @@ import { User } from './schemas/User';
 const databaseURL =
   process.env.DATABASE_URL || 'mongodb://localhost:keystone-sick-fits-tutorial';
 
-const sessionConfig {
+const sessionConfig = {
   maxAge: 60 * 60 * 24 * 360, // length of staying signed in (seconds, minutes, hours, days)
-    secret: process.env.COOKIE_SECRET,
+  secret: process.env.COOKIE_SECRET,
 };
 
 export default config({
@@ -16,7 +16,7 @@ export default config({
     cors: {
       origin: [process.env.FRONTEND_URL],
       credentials: true,
-    }
+    },
   },
   db: {
     adapter: 'mongoose',
@@ -25,7 +25,7 @@ export default config({
   },
   lists: createSchema({
     // Schema items go here
-    User
+    User,
   }),
   ui: {
     // TODO: change this for roles
