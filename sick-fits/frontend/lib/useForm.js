@@ -9,14 +9,30 @@ export default function useForm(initial = {}) {
     if (type === 'number') {
       value = parseInt(value);
     }
+    if (type === 'files') {
+      value[0] = e.target.files;
+    }
     setInputs({
       ...inputs,
       [name]: value,
     });
   }
 
+  function resetForm() {
+    setInputs(initial);
+  }
+
+  function clearForm() {
+    const blankState = Object.fromEntries(
+      Object.entries(inputs).map(([key, value]) => [key, ''])
+    );
+    setInputs(blankState);
+  }
+
   return {
     inputs,
     handleChange,
+    resetForm,
+    clearForm,
   };
 }
