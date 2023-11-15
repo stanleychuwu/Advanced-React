@@ -10,9 +10,10 @@ export default function useForm(initial = {}) {
       value = parseInt(value);
     }
     if (type === 'files') {
-      value[0] = e.target.files;
+      [value] = e.target.files;
     }
     setInputs({
+      // copy the existing state
       ...inputs,
       [name]: value,
     });
